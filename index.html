@@ -44,14 +44,14 @@ const url="https://api.nasa.gov/planetary/apod?api_key=";
 const api_key=document.getElementById("api_key").value;
 const date="&date="+document.getElementById("date_in").value;
 const response=await fetch(`${url}${api_key}${date}`);
-const data= await response.json();
-if(data.msg)
+const _data= await response.json();
+if(_data.msg)
 {
-alert(data.msg);
+alert(_data.msg);
 display();
 return;
 }
-if(!data.date)
+if(!_data.date)
 {
 alert("CONNECTION FAILED");
 display();
@@ -61,7 +61,7 @@ data={};
 data=Object.assign({},data,_data);
 display();
 }
-function display(data)
+function display()
 {
 document.getElementById("image").src=data.hdurl;
 document.getElementById("imageLINK").href=data.hdurl;
