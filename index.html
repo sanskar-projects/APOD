@@ -31,7 +31,8 @@ NASA API key(optional): <input type="text" id="api_key" value="DEMO_KEY"><br><br
 <a href="https://github.com/sanskar-projects/APOD/blob/2c39f6b7703be3d763146d9c58c99c7d9dc2d6ba/LICENSE" style="padding-left:50%;">(c) 2024 Sanskar</a>
 
 <script>
-var flag=true;
+var data;
+
 const fetchData=async()=>
 {
 document.getElementById("image").src="";
@@ -47,15 +48,18 @@ const data= await response.json();
 if(data.msg)
 {
 alert(data.msg);
-today();
+display();
 return;
 }
 if(!data.date)
 {
 alert("CONNECTION FAILED");
+display();
 return;
 }
-display(data);
+data={};
+data=Object.assign({},data,_data);
+display();
 }
 function display(data)
 {
